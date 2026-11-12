@@ -7,11 +7,8 @@ import { SectionTransition } from './components/SectionTransition';
 import { SiteFooter } from './components/SiteFooter';
 import { SiteHeader } from './components/SiteHeader';
 import { Statement } from './components/Statement';
-import { Ticker } from './components/Ticker';
 import { homeSections } from './data/navigation';
 import { useScrollScenes } from './hooks/useScrollScenes';
-
-const TICKER_WORDS = ['Pensar', 'Construir', 'Aprender', 'Mejorar', 'Pensar', 'Construir', 'Aprender', 'Mejorar'];
 
 export function App() {
   useScrollScenes();
@@ -23,7 +20,6 @@ export function App() {
       <SectionTransition />
       <main id="contenido">
         <Hero />
-        <Ticker words={TICKER_WORDS} />
         <ProjectsSection />
         <Statement />
         <ExperienceSection />

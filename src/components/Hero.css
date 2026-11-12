@@ -2,8 +2,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height) - var(--dock-height));
   overflow: hidden;
+}
+
+/* Menos aire arriba y abajo que el resto de secciones: al entrar deben verse
+   el titular, la presentación y los botones sin tener que bajar. */
+.hero.section-pad {
+  padding-block: clamp(28px, 6vh, 72px);
 }
 
 /* Cuadrícula en perspectiva que se desvanece hacia la izquierda. */
@@ -39,6 +45,37 @@
   margin: auto;
 }
 
+/* «Disponible para trabajar»: píldora con un punto que late. */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 6px 14px 6px 12px;
+  border: 1px solid rgb(184 255 77 / 0.35);
+  border-radius: 999px;
+  background: rgb(184 255 77 / 0.08);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__status-dot { animation: status-pulse 2s ease-in-out infinite; }
+}
+
+@keyframes status-pulse {
+  50% { opacity: 0.35; }
+}
+
 .hero__eyebrow { margin: 0; }
 
 /* El píxel de la etiqueta brilla como un led encendido. */
@@ -47,8 +84,9 @@
 }
 
 .hero__title {
-  margin: 34px 0 70px;
-  font-size: clamp(64px, 10.6vw, 174px);
+  margin: 22px 0 36px;
+  /* Depende del ancho y también del alto, para que quepa en pantallas bajas. */
+  font-size: clamp(56px, min(10.6vw, 16vh), 174px);
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.085em;
@@ -70,7 +108,8 @@
 }
 
 .hero__bottom p {
-  max-width: 585px;
+  /* Estrecho para que los botones quepan a su lado y no bajen de línea. */
+  max-width: 480px;
   margin: 0;
   color: #cac8c0;
   font-size: clamp(16px, 1.5vw, 21px);
@@ -94,6 +133,17 @@
 }
 
 @media (max-width: 480px) {
-  .hero__title { font-size: clamp(55px, 15vw, 80px); }
+  .hero__title {
+    margin: 16px 0 24px;
+    font-size: clamp(52px, 14vw, 80px);
+  }
+
+  /* Botones más compactos para que quepan dos por fila. */
+  .hero__actions { gap: 8px; }
+
+  .hero__actions .button {
+    padding: 0.6rem 0.95rem;
+    font-size: 15px;
+  }
   .hero__bottom p { font-size: 15px; }
 }

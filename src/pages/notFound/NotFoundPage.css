@@ -1,7 +1,7 @@
 .not-found {
   display: flex;
   align-items: center;
-  min-height: calc(100svh - var(--header-height) - 80px);
+  min-height: calc(100svh - var(--header-height) - var(--dock-height) - 80px);
 }
 
 /* El coche del portfolio, grande y volcado: se ha salido de la carretera.

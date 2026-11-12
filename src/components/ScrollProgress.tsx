@@ -6,17 +6,19 @@ import './ScrollProgress.css';
 interface ScrollProgressProps {
   /** Cambia al entrar en otra sección; cada cambio hace saltar al coche. */
   hopKey?: string;
+  /** Borde sobre el que circula: el inferior de la cabecera o el superior de la barra de abajo. */
+  placement?: 'header' | 'dock';
 }
 
 // React solo actualiza la variable CSS --progress; el CSS decide cómo se
 // dibuja (ancho de la línea y posición del coche) usando transform, que el
 // navegador anima sin recalcular el diseño de la página.
-export function ScrollProgress({ hopKey }: ScrollProgressProps) {
+export function ScrollProgress({ hopKey, placement = 'header' }: ScrollProgressProps) {
   const progress = useScrollProgress();
   const style = { '--progress': progress } as CSSProperties;
 
   return (
-    <div className="scroll-progress" style={style} aria-hidden="true">
+    <div className={placement === 'dock' ? 'scroll-progress scroll-progress--dock' : 'scroll-progress'} style={style} aria-hidden="true">
       <div className="scroll-progress__track">
         <div className="scroll-progress__fill" />
       </div>

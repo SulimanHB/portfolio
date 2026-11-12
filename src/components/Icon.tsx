@@ -51,6 +51,12 @@ const strokeIcons = {
       <path d="M12 19h8" />
     </>
   ),
+  download: (
+    <>
+      <path d="M12 4v11m-5-5 5 5 5-5" />
+      <path d="M5 20h14" />
+    </>
+  ),
   'arrow-right': <path d="M5 12h14m-6-6 6 6-6 6" />,
   'arrow-left': <path d="M19 12H5m6-6-6 6 6 6" />,
   'arrow-up': <path d="M12 19V5m-6 6 6-6 6 6" />,

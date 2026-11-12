@@ -15,13 +15,16 @@ export function useScrollScenes() {
 
     const scenes = Array.from(document.querySelectorAll<HTMLElement>('.scroll-scene'));
     const header = document.querySelector('.site-header');
+    const dock = document.querySelector('.site-dock');
     const headerHeight = () => header?.getBoundingClientRect().height ?? 0;
+    // Alto visible: la pantalla menos la barra fija de abajo.
+    const visibleHeight = () => window.innerHeight - (dock?.getBoundingClientRect().height ?? 0);
     let frame = 0;
 
     // La altura cambia al cargar fuentes o al girar el móvil: se recalcula.
     const updateStickyTops = () => {
       for (const scene of scenes) {
-        const top = stickyTop(scene.offsetHeight, window.innerHeight, headerHeight());
+        const top = stickyTop(scene.offsetHeight, visibleHeight(), headerHeight());
         scene.style.setProperty('--stick-top', `${top}px`);
       }
     };
@@ -30,7 +33,7 @@ export function useScrollScenes() {
       frame = 0;
       scenes.forEach((scene, i) => {
         const next = scenes[i + 1];
-        const cover = next ? coverProgress(next.getBoundingClientRect().top, window.innerHeight, headerHeight()) : 0;
+        const cover = next ? coverProgress(next.getBoundingClientRect().top, visibleHeight(), headerHeight()) : 0;
         scene.style.setProperty('--cover', cover.toFixed(3));
       });
     };

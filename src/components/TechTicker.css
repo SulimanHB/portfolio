@@ -1,0 +1,64 @@
+/* Cinta de tecnologías dentro de la barra inferior: ocupa todo su alto. */
+.tech-ticker {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  /* Los extremos se difuminan para que la cinta entre y salga suave. */
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.tech-ticker__track {
+  display: flex;
+  width: max-content;
+}
+
+.tech-ticker__list {
+  display: flex;
+  flex: none;
+  gap: 36px;
+  margin: 0;
+  padding: 0 18px;
+  list-style: none;
+}
+
+.tech-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-soft);
+  font: 600 13px var(--font-display);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.tech-ticker__item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+}
+
+/* En movimiento: las dos listas iguales se desplazan media pista y vuelven a empezar. */
+@media (prefers-reduced-motion: no-preference) {
+  .tech-ticker__track {
+    animation: tech-ticker 40s linear infinite;
+  }
+
+  .tech-ticker:hover .tech-ticker__track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes tech-ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* Quieta: una sola lista que se puede desplazar en horizontal con el dedo o el ratón. */
+@media (prefers-reduced-motion: reduce) {
+  .tech-ticker {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tech-ticker__list--copy { display: none; }
+}

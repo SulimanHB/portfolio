@@ -1,8 +1,27 @@
-import { profile, skillGroups } from '../data/profile';
+import { education, nextGoals, profile, skillGroups, type StudyItem } from '../data/profile';
 import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
 import { StageSection } from './StageSection';
 import './AboutSection.css';
+
+function StudyList({ items }: { items: readonly StudyItem[] }) {
+  return (
+    <ul className="about__studies">
+      {items.map((item) => (
+        <li key={item.title}>
+          <div>
+            <p className="about__study-title">{item.title}</p>
+            <p className="about__study-detail">
+              {item.detail}
+              {item.period && <> · {item.period}</>}
+            </p>
+          </div>
+          <span className="status-pill">{item.status}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function AboutSection() {
   return (
@@ -24,6 +43,12 @@ export function AboutSection() {
               </div>
             ))}
           </dl>
+
+          <h3>Formación</h3>
+          <StudyList items={education} />
+
+          <h3>Próximos objetivos</h3>
+          <StudyList items={nextGoals} />
         </Reveal>
       </div>
     </StageSection>

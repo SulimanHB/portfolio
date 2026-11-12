@@ -20,13 +20,18 @@
   --header-bar-height: 74px;
   /* La barra del coche va sobre el borde de la cabecera y no suma altura. */
   --header-height: var(--header-bar-height);
+  /* Barra fija inferior con la cinta de tecnologías. */
+  --dock-height: 52px;
   --gutter: clamp(20px, 7vw, 120px);
 
   color-scheme: dark;
 }
 
 @media (max-width: 780px) {
-  :root { --header-bar-height: 64px; }
+  :root {
+    --header-bar-height: 64px;
+    --dock-height: 46px;
+  }
 }
 
 *,
@@ -46,6 +51,8 @@ html {
 
 body {
   margin: 0;
+  /* Hueco para que la barra fija de abajo no tape el final de la página. */
+  padding-bottom: var(--dock-height);
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);

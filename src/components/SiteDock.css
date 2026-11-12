@@ -1,0 +1,10 @@
+.site-dock {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  height: var(--dock-height);
+  border-top: 1px solid #ffffff16;
+  background: var(--color-bg);
+}

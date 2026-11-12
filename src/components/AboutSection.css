@@ -48,6 +48,35 @@
   line-height: 1.5;
 }
 
+/* Formación y objetivos: título y centro a la izquierda, estado a la derecha. */
+.about__studies {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about__studies li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 17px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.about__study-title {
+  margin: 0;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.about__study-detail {
+  margin: 2px 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
 @media (max-width: 480px) {
   .about__skills > div {
     grid-template-columns: 1fr;

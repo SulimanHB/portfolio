@@ -44,6 +44,17 @@
 
 .contact__email span { color: var(--color-accent-deep); }
 
+.contact__cv { margin: 32px 0 0; }
+
+/* Botón oscuro: sobre el fondo claro del contacto, el verde no contrasta. */
+.button--dark {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-light);
+}
+
+.button--dark:hover { background: #2a3326; }
+
 /* En el email grande, el icono a 1.4em sería enorme: se ajusta al texto. */
 .contact__email .icon {
   width: 0.85em;

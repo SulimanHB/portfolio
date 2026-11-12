@@ -8,6 +8,7 @@ export function Hero() {
     <section id="inicio" className="hero section-pad scroll-scene" aria-labelledby="hero-title">
       <div className="hero__grid" aria-hidden="true" />
       <Reveal className="hero__inner">
+        <p className="hero__status"><span className="hero__status-dot" aria-hidden="true" />{profile.availability}</p>
         <p className="hero__eyebrow label">{profile.role}</p>
         <h1 id="hero-title" className="hero__title">
           Ideas que<br /><em>toman forma.</em>
@@ -20,6 +21,9 @@ export function Hero() {
             </a>
             <a className="button button--ghost" href="#contacto">
               <Icon name="mail" /> Contactar
+            </a>
+            <a className="button button--ghost" href={profile.cv} download>
+              <Icon name="download" /> Descargar CV
             </a>
           </div>
         </div>

@@ -19,6 +19,11 @@ export function ContactSection() {
         <a className="contact__email" href={email.href}>
           <Icon name={email.icon} /> {email.text} <span aria-hidden="true">↗</span>
         </a>
+        <p className="contact__cv">
+          <a className="button button--dark" href={profile.cv} download>
+            <Icon name="download" /> Descargar CV
+          </a>
+        </p>
         <ul className="contact__links">
           {contactLinks.map((link) => (
             <li key={link.label}>

@@ -16,6 +16,13 @@
   pointer-events: none;
 }
 
+/* En la barra inferior, la pista va sobre su borde superior y el coche
+   circula por encima, asomando sobre el contenido de la página. */
+.scroll-progress--dock {
+  top: -24px;
+  bottom: auto;
+}
+
 /* Centrada sobre el borde de 1 px de la cabecera. */
 .scroll-progress__track {
   position: absolute;

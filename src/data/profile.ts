@@ -17,6 +17,9 @@ export interface ContactLink {
 export const profile = {
   name: 'Suliman Hassan El Boutaybi',
   role: 'Desarrollador de software · Full stack',
+  availability: 'Disponible para trabajar',
+  /** CV público (lo decidió Suliman el 2026-11-12, con sus datos de contacto). */
+  cv: '/cv/Suliman_Hassan_El_Boutaybi_CV.pdf',
   location: 'Gran Canaria, España',
   intro:
     'Soy Suliman Hassan El Boutaybi, graduado en Ingeniería Informática. He desarrollado una plataforma ' +
@@ -24,7 +27,6 @@ export const profile = {
   approach:
     'Me interesa entender el problema completo y construir soluciones que funcionen de verdad.',
   education:
-    'Me gradué en Ingeniería Informática por la Universidad de Las Palmas de Gran Canaria (2022–2026). ' +
     'Me interesa seguir creciendo en frontend, backend y desarrollo full stack, con código que pueda ' +
     'comprender, mantener y explicar.',
 } as const;
@@ -54,4 +56,26 @@ export const skillGroups: readonly { label: string; items: string }[] = [
   { label: 'Interfaz y servidor', items: 'React, Angular, Node.js, Express' },
   { label: 'Datos y herramientas', items: 'PostgreSQL, Git, GitHub, Docker, Firebase' },
   { label: 'Competencias', items: 'APIs REST, autenticación, integración de servicios, despliegue' },
+];
+
+/** Formación terminada y próximos objetivos, con su estado real. */
+export interface StudyItem {
+  title: string;
+  detail: string;
+  period?: string;
+  status: string;
+}
+
+export const education: readonly StudyItem[] = [
+  {
+    title: 'Grado en Ingeniería Informática',
+    detail: 'Universidad de Las Palmas de Gran Canaria',
+    period: '2022 – 2026',
+    status: 'Completado',
+  },
+];
+
+// Solo metas confirmadas por Suliman; se presentan como objetivos, no como logros.
+export const nextGoals: readonly StudyItem[] = [
+  { title: 'Inglés B2', detail: 'Idiomas', status: 'En preparación' },
 ];
