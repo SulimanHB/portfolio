@@ -1,0 +1,27 @@
+.statement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 430px;
+  background: var(--color-accent);
+  color: #11170e;
+}
+
+.statement .label {
+  margin: 0;
+  color: #233d12;
+}
+
+.statement__text {
+  max-width: 1130px;
+  margin: 35px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.3vw, 66px);
+  line-height: 1.16;
+  letter-spacing: -0.05em;
+}
+
+.statement__text em {
+  color: #f8ffe9;
+  font-style: normal;
+}

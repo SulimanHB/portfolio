@@ -1,0 +1,230 @@
+/* Tokens de diseño: estilo visual del portfolio original (negro verdoso y verde lima). */
+:root {
+  --color-bg: #090c09;
+  --color-surface: #141a13;
+  --color-surface-alt: #111711;
+  --color-border: #354033;
+  --color-grid: #ffffff0c;
+  --color-text: #f1f6ed;
+  --color-text-soft: #c7c5bd;
+  --color-muted: #a8b4a3;
+  --color-accent: #b8ff4d;
+  --color-accent-deep: #47771b;
+  --color-light: #e4ebdc;
+  --color-ink: #151b13;
+
+  --font-sans: 'DM Sans', system-ui, Arial, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+  --header-bar-height: 74px;
+  /* La barra del coche va sobre el borde de la cabecera y no suma altura. */
+  --header-height: var(--header-bar-height);
+  --gutter: clamp(20px, 7vw, 120px);
+
+  color-scheme: dark;
+}
+
+@media (max-width: 780px) {
+  :root { --header-bar-height: 64px; }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Las anclas no quedan tapadas por la cabecera fija. */
+  scroll-padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1, h2, h3 { font-family: var(--font-display); }
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* ---------- Utilidades de diseño ---------- */
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .container { padding-inline: 1rem; }
+}
+
+.section-pad {
+  padding: clamp(80px, 10vw, 150px) var(--gutter);
+}
+
+@media (max-width: 480px) {
+  .section-pad { padding: 78px 20px; }
+}
+
+/* Rejilla de dos columnas (etiqueta | contenido) de Experiencia y Sobre mí. */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 25px;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 780px) {
+  .split { grid-template-columns: 1fr; }
+}
+
+/* Etiqueta pequeña en mayúsculas: «01 / TRABAJO», «PROYECTO PERSONAL»… */
+.label {
+  color: var(--color-accent);
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Píxel cuadrado delante de cada etiqueta: el mismo lenguaje que el coche. */
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  background: currentColor;
+  vertical-align: 1px;
+}
+
+.accent { color: var(--color-accent); }
+
+/* Estado honesto de un proyecto («Beta funcional en local»…). */
+.status-pill {
+  display: inline-block;
+  margin: 0;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font: 600 12px var(--font-mono);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.3rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.button--primary:hover { background: #d3ff94; }
+
+.button--ghost { color: var(--color-accent); }
+
+.button--ghost:hover { background: rgb(184 255 77 / 0.1); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 30;
+  padding: 0.75rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.skip-link:focus { top: 0.75rem; }
+
+/*
+ * Tarjetas apiladas (ver useScrollScenes). Cada sección es una tarjeta:
+ * - Cuando terminas de leerla se queda fija (position: sticky).
+ * - La siguiente sube deslizándose por encima, con las esquinas superiores
+ *   redondeadas y una sombra que la separa.
+ * - La de debajo se aleja (se encoge) y se oscurece mientras la tapan.
+ * Todo sigue al scroll: si paras, el deslizamiento se para.
+ */
+
+/* Fondo opaco por defecto para que una tarjeta tape a la anterior.
+   :where() no suma especificidad: cada sección puede poner su propio color. */
+:where(.scroll-scene) {
+  background-color: var(--color-bg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* «main >» sube la especificidad por encima del position: relative de cada sección. */
+  main > .scroll-scene {
+    position: sticky;
+    top: var(--stick-top, var(--header-height));
+    overflow: clip;
+    filter: brightness(calc(1 - var(--cover, 0) * 0.5));
+    transform: scale(calc(1 - var(--cover, 0) * 0.06));
+    transform-origin: 50% 100%;
+  }
+
+  /* Todas menos la primera tienen forma de tarjeta. */
+  main > .scroll-scene ~ .scroll-scene {
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -24px 60px rgb(0 0 0 / 0.55);
+  }
+}
+
+/*
+ * Aparición al hacer scroll. Solo se oculta el contenido si la persona no ha
+ * pedido reducir el movimiento; en ese caso todo se ve desde el principio.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}

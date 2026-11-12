@@ -1,0 +1,89 @@
+/* Estilos propios de la página de Vocabia. Lo común está en styles/project-page.css. */
+
+.vocabia-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  list-style: none;
+}
+
+.vocabia-words li:not(:last-child)::after {
+  content: ' ·';
+  color: var(--color-accent);
+}
+
+/* Recorrido con la palabra fija a un lado (solo en pantallas anchas). */
+@media (min-width: 960px) {
+  .story--aside {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+/* En móvil la palabra fija ocuparía demasiado: basta con la lista del hero. */
+.story__aside {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .story__aside {
+    display: block;
+  }
+}
+
+.word-trail {
+  position: sticky;
+  top: calc(var(--header-height) + 3rem);
+}
+
+.word-trail__language {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.word-trail__word {
+  margin: 0.25rem 0 1rem;
+  color: var(--color-accent);
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .word-trail__word {
+    animation: word-in 0.4s ease;
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.word-trail__steps {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.word-trail__steps li {
+  width: 8px;
+  height: 8px;
+  background: var(--color-border);
+}
+
+.word-trail__steps li.is-active {
+  background: var(--color-accent);
+}
+

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- El cochecito pixelado del portfolio sobre fondo oscuro. -->
+  <rect width="16" height="16" rx="3" fill="#090c09"/>
+  <g transform="translate(0 3)">
+    <rect x="4" y="0" width="7" height="1" fill="#b8ff4d"/>
+    <rect x="3" y="1" width="9" height="3" fill="#b8ff4d"/>
+    <rect x="0" y="4" width="16" height="3" fill="#b8ff4d"/>
+    <rect x="4" y="1" width="3" height="2" fill="#090c09"/>
+    <rect x="8" y="1" width="3" height="2" fill="#090c09"/>
+    <rect x="2" y="6" width="3" height="3" fill="#d4d4d4"/>
+    <rect x="11" y="6" width="3" height="3" fill="#d4d4d4"/>
+  </g>
+</svg>

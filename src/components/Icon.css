@@ -1,0 +1,7 @@
+/* Tamaño relativo al texto: un poco mayor que la letra para que se distinga. */
+.icon {
+  flex: none;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: -0.3em;
+}

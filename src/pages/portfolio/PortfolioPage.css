@@ -1,0 +1,37 @@
+/* Estilos propios de la página del portfolio. Lo común está en styles/project-page.css. */
+
+.project-hero .tag-list { margin-bottom: 2rem; }
+
+/* Árbol de carpetas: texto monoespaciado que se desplaza en horizontal en móvil. */
+.folder-tree {
+  overflow-x: auto;
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 0.9rem/1.7 var(--font-mono);
+}
+
+/* Dos columnas: qué se tomó de cada versión. */
+.compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+}
+
+.compare__column {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+
+.compare__column h3 {
+  margin: 0 0 0.75rem;
+  color: var(--color-accent);
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

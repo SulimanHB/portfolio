@@ -1,0 +1,244 @@
+/* Estilos comunes de las páginas de proyecto (/vocabia/, /portfolio/…). */
+
+/* ---------- Hero ---------- */
+.project-hero {
+  padding-block: 3rem 4rem;
+  background:
+    radial-gradient(ellipse at 80% 10%, rgb(184 255 77 / 0.1), transparent 55%),
+    linear-gradient(var(--color-grid) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px) 0 0 / 40px 40px;
+}
+
+.project-hero__inner {
+  margin-bottom: 3rem;
+}
+
+.project-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.project-hero__back:hover {
+  color: var(--color-accent);
+}
+
+.project-hero__kicker {
+  margin: 0 0 0.5rem;
+  color: var(--color-accent);
+  font: 600 11px var(--font-display);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.project-hero__title {
+  margin: 0;
+  font-size: clamp(64px, 10.6vw, 150px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.085em;
+}
+
+.project-hero__lead {
+  max-width: 36rem;
+  margin: 1.25rem 0 1.5rem;
+  color: var(--color-muted);
+  font-size: 1.2rem;
+}
+
+.project-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.project-hero__status {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.project-hero__shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.6);
+}
+
+/* ---------- Recorrido por capítulos ---------- */
+.story {
+  display: grid;
+  gap: 3rem;
+  padding-block: 4rem;
+}
+
+.story__content {
+  display: grid;
+  gap: 5rem;
+  min-width: 0;
+}
+
+.story-section {
+  display: grid;
+  gap: 1.75rem;
+  scroll-margin-top: var(--header-height);
+}
+
+.story-section__kicker {
+  margin: 0 0 0.5rem;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.story-section__title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  letter-spacing: -0.01em;
+}
+
+.story-section__body {
+  display: grid;
+  gap: 1rem;
+  max-width: 42rem;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.story-section__body p {
+  margin: 0;
+}
+
+.story-section__body strong {
+  color: var(--color-text);
+}
+
+.story-section__figure {
+  margin: 0;
+}
+
+.story-section__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.story-section__figure figcaption {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.story-list {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.story-list li::before {
+  content: '▸ ';
+  color: var(--color-accent);
+}
+
+/* Diagrama de flujo (arquitectura): tres cajas unidas por flechas. */
+.architecture {
+  display: grid;
+  gap: 2rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 700px) {
+  .architecture {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.architecture li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+
+.architecture strong {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+
+.architecture span {
+  font-size: 0.9rem;
+}
+
+.architecture li:not(:last-child)::after {
+  content: '↓';
+  position: absolute;
+  bottom: -1.75rem;
+  left: 50%;
+  color: var(--color-accent);
+  transform: translateX(-50%);
+}
+
+@media (min-width: 700px) {
+  .architecture li:not(:last-child)::after {
+    content: '→';
+    top: 50%;
+    right: -1.5rem;
+    bottom: auto;
+    left: auto;
+    transform: translateY(-50%);
+  }
+}
+
+/* ---------- Pruébala ---------- */
+.try {
+  padding-block: 5rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.try__inner {
+  max-width: 48rem;
+  color: var(--color-muted);
+}
+
+.try__title {
+  margin: 0 0 1rem;
+  color: var(--color-text);
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+}
+
+.try__code {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.try code {
+  font-family: var(--font-mono);
+}

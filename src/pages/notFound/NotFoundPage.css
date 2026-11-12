@@ -1,0 +1,18 @@
+.not-found {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--header-height) - 80px);
+}
+
+/* El coche del portfolio, grande y volcado: se ha salido de la carretera.
+   Sus colores vienen de ScrollProgress.css, que carga la cabecera. */
+.not-found__car {
+  width: 96px;
+  margin-bottom: 2rem;
+  rotate: 12deg;
+}
+
+.not-found__car .pixel-car {
+  width: 100%;
+  height: auto;
+}

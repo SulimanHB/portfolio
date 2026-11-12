@@ -1,0 +1,21 @@
+/* Posicionado y con fondo para pasar por encima del contacto fijado. */
+.site-footer {
+  position: relative;
+  background: var(--color-bg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 28px var(--gutter);
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.site-footer a:hover { color: var(--color-accent); }

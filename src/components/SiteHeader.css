@@ -1,0 +1,113 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-bg);
+}
+
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-bar-height);
+  padding: 0 clamp(20px, 5vw, 88px);
+  border-bottom: 1px solid #ffffff16;
+}
+
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.site-header__brand {
+  font: 700 30px var(--font-display);
+  letter-spacing: -0.1em;
+  text-decoration: none;
+}
+
+/* Sección actual: «02 / Experiencia». Cambia al pasar a otra sección. */
+.site-header__section {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--color-border);
+  color: var(--color-accent);
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header__section {
+    animation: section-in 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Entra desde abajo y se «revela» de izquierda a derecha, como texto tecleado. */
+@keyframes section-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header__section { display: none; }
+}
+
+/* Enlace de la sección en la que estás. */
+.site-header__nav a.is-current { color: var(--color-accent); }
+
+.site-header__star {
+  display: inline-block;
+  color: var(--color-accent);
+  font-size: 18px;
+  vertical-align: top;
+  transform: translate(3px, 2px);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(15px, 2.6vw, 42px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header__nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e4e1da;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a:focus-visible {
+  color: var(--color-accent);
+}
+
+/* Alto contenido para que el coche pase por debajo sin rozar el botón. */
+.site-header__cta {
+  padding: 9px 16px;
+  border: 1px solid #77766d;
+  border-radius: 30px;
+}
+
+/* En pantallas estrechas se ocultan enlaces secundarios; Contacto siempre queda. */
+@media (max-width: 780px) {
+  .site-header__nav { gap: 14px; }
+  .site-header__nav a { font-size: 11px; }
+  .site-header__nav li:nth-child(3) { display: none; }
+  .site-header__cta { padding: 6px 10px; }
+}
+
+@media (max-width: 480px) {
+  .site-header__nav li:nth-child(2) { display: none; }
+}

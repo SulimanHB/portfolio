@@ -1,0 +1,67 @@
+.section-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-stage > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Línea superior. Sin animación se ve completa desde el principio. */
+.section-stage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .section-stage::before {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .section-stage.is-active::before {
+    transform: scaleX(1);
+  }
+}
+
+/* Cabecera de sección: número a la izquierda, título y texto a la derecha. */
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.section-heading .label {
+  margin: 0;
+  padding-top: 14px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(48px, 7vw, 100px);
+  line-height: 1;
+  letter-spacing: -0.07em;
+}
+
+.section-heading > p:last-child {
+  grid-column: 2;
+  max-width: 600px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+@media (max-width: 780px) {
+  .section-heading { grid-template-columns: 1fr; }
+  .section-heading > p:last-child { grid-column: 1; }
+}

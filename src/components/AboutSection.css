@@ -1,0 +1,56 @@
+.about-section { background: var(--color-surface-alt); }
+
+.about__lead {
+  max-width: 420px;
+  font-family: var(--font-display);
+  font-size: clamp(29px, 3.4vw, 50px);
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+
+.about__lead em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.about__detail { max-width: 720px; }
+
+.about__detail > p {
+  color: #c0beb7;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.about__detail h3 {
+  margin: 45px 0 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.about__skills { margin: 0; }
+
+.about__skills > div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 20px;
+  padding: 17px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.about__skills dt {
+  color: var(--color-accent);
+  font-size: 12px;
+}
+
+.about__skills dd {
+  margin: 0;
+  color: #c9c7c0;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .about__skills > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}

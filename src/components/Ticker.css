@@ -1,0 +1,27 @@
+/* Posicionada y con fondo para pasar por encima del inicio fijado. */
+.ticker {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: 18px 0;
+  border-block: 1px solid var(--color-border);
+  color: var(--color-accent);
+  font: 600 13px var(--font-display);
+  letter-spacing: 0.25em;
+  white-space: pre;
+}
+
+.ticker__track {
+  width: max-content;
+}
+
+/* Con movimiento reducido la cinta queda quieta. */
+@media (prefers-reduced-motion: no-preference) {
+  .ticker__track {
+    animation: ticker 26s linear infinite;
+  }
+}
+
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}

@@ -1,0 +1,77 @@
+/*
+ * La barra va montada sobre la línea inferior de la cabecera: el carril se
+ * superpone al borde y el coche circula justo encima, dentro de la cabecera.
+ * Es absoluta, así que no añade altura a la cabecera.
+ */
+.scroll-progress {
+  --car-width: 32px;
+  --track-height: 4px;
+  position: absolute;
+  right: 20px;
+  bottom: -4px;
+  left: 20px;
+  /* Alto de sobra para que el salto del coche no se recorte. */
+  height: 28px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Centrada sobre el borde de 1 px de la cabecera. */
+.scroll-progress__track {
+  position: absolute;
+  inset: auto 0 2px;
+  height: var(--track-height);
+  border-radius: 2px;
+  background: #30412d;
+}
+
+.scroll-progress__fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #65ac2b, var(--color-accent));
+  box-shadow: 0 0 10px #b8ff4d88;
+  transform: scaleX(var(--progress));
+  transform-origin: left;
+}
+
+/*
+ * El carril mide (ancho total − coche). Al desplazarlo un % de su propio
+ * ancho, el coche recorre exactamente de borde a borde sin salirse.
+ */
+.scroll-progress__lane {
+  /* Las ruedas pisan la pista, como un coche sobre la carretera. */
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: calc(100% - var(--car-width));
+  transform: translateX(calc(var(--progress) * 100%));
+}
+
+/*
+ * Saltito al cambiar de sección. Va a pasos (steps) para que el movimiento
+ * sea «pixelado», como el propio coche.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-progress__car.is-hopping {
+    animation: car-hop 0.45s steps(4, end);
+  }
+}
+
+@keyframes car-hop {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-4px); }
+  70% { transform: translateY(-2px); }
+}
+
+.pixel-car {
+  display: block;
+  width: var(--car-width);
+  height: 20px;
+}
+
+.pixel-car__body { fill: var(--color-accent); }
+.pixel-car__window { fill: var(--color-bg); }
+.pixel-car__light { fill: #f3ffcf; }
+.pixel-car__tail { fill: #5b9e25; }
+.pixel-car__wheel { fill: #d4d4d4; }
+.pixel-car__hub { fill: var(--color-bg); }

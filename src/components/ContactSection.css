@@ -1,0 +1,95 @@
+/* Sección clara: invierte la paleta para cerrar la página. */
+.contact {
+  background: var(--color-light);
+  color: var(--color-ink);
+}
+
+.contact .label {
+  margin: 0;
+  color: var(--color-accent-deep);
+}
+
+.contact h2 {
+  margin: 38px 0;
+  font-size: clamp(65px, 10vw, 140px);
+  line-height: 0.95;
+  letter-spacing: -0.085em;
+}
+
+.contact h2 em {
+  color: var(--color-accent-deep);
+  font-style: normal;
+}
+
+.contact__intro {
+  max-width: 520px;
+  margin-bottom: 50px;
+  color: #55544e;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.contact__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-ink);
+  font: 500 clamp(23px, 3.8vw, 55px) var(--font-display);
+  letter-spacing: -0.05em;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.contact__email span { color: var(--color-accent-deep); }
+
+/* En el email grande, el icono a 1.4em sería enorme: se ajusta al texto. */
+.contact__email .icon {
+  width: 0.85em;
+  height: 0.85em;
+}
+
+/* Tarjetas de contacto con su canal encima, una por cada vía. */
+.contact__links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 14px;
+  margin: 50px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact__links li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid #b9c4ad;
+  border-radius: 10px;
+  background: #f2f6ec;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.contact__links a {
+  text-decoration: none;
+}
+
+.contact__links a:hover { color: var(--color-accent-deep); }
+
+.contact__channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-accent-deep);
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact :focus-visible { outline-color: var(--color-ink); }
+
+@media (max-width: 780px) {
+  .contact__email { font-size: clamp(20px, 4vw, 38px); }
+}
