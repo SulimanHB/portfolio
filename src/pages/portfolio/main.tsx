@@ -1,10 +1,4 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { mountPage } from '../../mountPage';
 import { PortfolioPage } from './PortfolioPage';
-import '../../styles/global.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <PortfolioPage />
-  </StrictMode>,
-);
+mountPage(<PortfolioPage />);

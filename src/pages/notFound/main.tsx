@@ -1,10 +1,4 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { mountPage } from '../../mountPage';
 import { NotFoundPage } from './NotFoundPage';
-import '../../styles/global.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <NotFoundPage />
-  </StrictMode>,
-);
+mountPage(<NotFoundPage />);
